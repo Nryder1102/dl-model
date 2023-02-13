@@ -31,7 +31,7 @@ function makeRequest(method, url) {
 const httpGet = url => makeRequest("GET", url);
 
 const getFileList = async id => {
-    const url = `https://api.github.com/repos/dgk3593/dl-model/contents/public/fbx/${id}`;
+    const url = `https://api.github.com/repos/nryder1102/dl-model/contents/public/fbx/${id}`;
     const response = await httpGet(url);
     const json = JSON.parse(response);
     return json.map(item => item.name);
@@ -51,7 +51,7 @@ const downloadFile = async url => {
 export const downloadModel = async id => {
     const fileList = await getFileList(id);
     const list = fileList.map(name => {
-        const url = `https://dgk3593.github.io/dl-model/fbx/${id}/${name}`;
+        const url = `https://nryder1102.github.io/dl-model/fbx/${id}/${name}`;
         const data = downloadFile(url);
         return { name, data };
     });
